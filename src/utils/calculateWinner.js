@@ -1,4 +1,3 @@
-
 const calculateWinner = (square) => {
   const lines = [
     [0, 1, 2],
@@ -16,11 +15,8 @@ const calculateWinner = (square) => {
     if (square[a] && square[a] === square[b] && square[a] === square[c]) {
       return square[a];
     }
-    
   }
   return null;
-}
-
-
+};
 
 export default calculateWinner;

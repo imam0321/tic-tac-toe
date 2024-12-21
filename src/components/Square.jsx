@@ -1,8 +1,4 @@
-
-
-export const Square = ({value, onSquareClick}) => {
-  
-  
+export const Square = ({ value, onSquareClick }) => {
   return (
     <button
       onClick={onSquareClick}
