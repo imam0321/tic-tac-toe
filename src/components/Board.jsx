@@ -1,13 +1,24 @@
 import { useState } from "react";
 import { Square } from "./Square";
+import calculateWinner from "../utils/CalculateWinner";
 
 export const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
 
+  const winner = calculateWinner(squares);
+  let status;
+
+  if (winner) {
+    status = `Winner : ${winner}`
+  } else {
+    status = "Next Player " + (xIsNext ? "X" : "O");
+  }
+
+
   
   const handleClick = (i) => {
-    if (squares[i]) {
+    if (squares[i] || calculateWinner(squares)) {
       return;
     }
 
@@ -23,6 +34,7 @@ export const Board = () => {
 
   return (
     <>
+    <div className="">{status}</div>
       <div className="flex">
         <Square value={squares[0]} onSquareClick={()=>handleClick(0)}/>
         <Square value={squares[1]} onSquareClick={()=>handleClick(1)}/>
